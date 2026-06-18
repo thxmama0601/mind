@@ -55,9 +55,7 @@
                         <p>產出結構化提示詞，貼入任何免費AI即可使用</p>
                     </div>
                 </div>
-                <button class="btn btn-primary btn-lg" onclick="startAnalysis()">
-                    開始分析問題
-                </button>
+                <button class="btn btn-primary btn-lg" onclick="startAnalysis()">開始分析問題</button>
             </div>
         </div>
     </section>
@@ -65,32 +63,14 @@
     <!-- ==================== APP WIZARD ==================== -->
     <section id="app" class="section-app" style="display:none;">
         <div class="container">
-            <!-- Stepper -->
             <div class="stepper">
-                <div class="stepper-track">
-                    <div class="stepper-progress" id="stepperProgress"></div>
-                </div>
+                <div class="stepper-track"><div class="stepper-progress" id="stepperProgress"></div></div>
                 <div class="stepper-steps">
-                    <button class="step active" data-step="0" onclick="goToStep(0)">
-                        <span class="step-num">1</span>
-                        <span class="step-label">描述問題</span>
-                    </button>
-                    <button class="step" data-step="1" onclick="goToStep(1)">
-                        <span class="step-num">2</span>
-                        <span class="step-label">問對問題</span>
-                    </button>
-                    <button class="step" data-step="2" onclick="goToStep(2)">
-                        <span class="step-num">3</span>
-                        <span class="step-label">思考習慣</span>
-                    </button>
-                    <button class="step" data-step="3" onclick="goToStep(3)">
-                        <span class="step-num">4</span>
-                        <span class="step-label">問題規格書</span>
-                    </button>
-                    <button class="step" data-step="4" onclick="goToStep(4)">
-                        <span class="step-num">5</span>
-                        <span class="step-label">AI 提示詞</span>
-                    </button>
+                    <button class="step active" data-step="0" onclick="goToStep(0)"><span class="step-num">1</span><span class="step-label">描述問題</span></button>
+                    <button class="step" data-step="1" onclick="goToStep(1)"><span class="step-num">2</span><span class="step-label">問對問題</span></button>
+                    <button class="step" data-step="2" onclick="goToStep(2)"><span class="step-num">3</span><span class="step-label">思考習慣</span></button>
+                    <button class="step" data-step="3" onclick="goToStep(3)"><span class="step-num">4</span><span class="step-label">問題規格書</span></button>
+                    <button class="step" data-step="4" onclick="goToStep(4)"><span class="step-num">5</span><span class="step-label">AI 提示詞</span></button>
                 </div>
             </div>
 
@@ -98,17 +78,40 @@
             <div class="step-content active" id="step-0">
                 <div class="card">
                     <h2>描述你遇到的問題</h2>
-                    <p class="card-desc">請盡可能具體地描述你目前面臨的問題或挑戰。不需要完美，先把想法寫下來。</p>
-                    <textarea id="problemInput" class="input-textarea" rows="8"
-                        placeholder="例如：我們團隊要在三個月內完成一個新產品的開發，但團隊成員對技術方向有分歧，而且預算有限。老闆希望能同時滿足兩個不同客戶群的需求，但我覺得這樣會讓產品失去焦點..."></textarea>
-                    <div class="tips-box">
-                        <h4>寫作提示</h4>
-                        <ul>
-                            <li>描述具體的情境和背景</li>
-                            <li>說明為什麼這是個問題（痛點在哪）</li>
-                            <li>提到你已經嘗試過什麼方法</li>
-                            <li>越詳細越好，AI 分析會更精準</li>
-                        </ul>
+                    <p class="card-desc">請盡可能具體地描述你目前面臨的問題或挑戰。越詳細，後續分析越精準。</p>
+                    <textarea id="problemInput" class="input-textarea" rows="6"
+                        placeholder="例如：我們團隊要在三個月內完成一個新產品的開發，但團隊成員對技術方向有分歧，而且預算有限..."></textarea>
+
+                    <div class="sub-questions">
+                        <h4>深度補充（選填，但會讓分析更精準）</h4>
+                        <div class="sub-q-grid">
+                            <div class="sub-q-item">
+                                <label>問題類型</label>
+                                <select id="problemType" class="input-select">
+                                    <option value="">-- 選擇最接近的 --</option>
+                                    <option value="decision">決策選擇（A 還是 B）</option>
+                                    <option value="conflict">衝突協調（人際 / 團隊）</option>
+                                    <option value="strategy">策略規劃（方向 / 佈局）</option>
+                                    <option value="execution">執行卡關（做不出來）</option>
+                                    <option value="innovation">創新探索（從 0 到 1）</option>
+                                    <option value="optimization">效率優化（做得更好）</option>
+                                    <option value="communication">溝通說服（對上 / 對下）</option>
+                                    <option value="personal">個人成長（職涯 / 學習）</option>
+                                </select>
+                            </div>
+                            <div class="sub-q-item">
+                                <label>緊急程度</label>
+                                <select id="problemUrgency" class="input-select">
+                                    <option value="">-- 選擇 --</option>
+                                    <option value="urgent">急迫（一週內需要行動）</option>
+                                    <option value="soon">短期（一個月內）</option>
+                                    <option value="medium">中期（一季內）</option>
+                                    <option value="long">長期（規劃性質）</option>
+                                </select>
+                            </div>
+                        </div>
+                        <textarea id="problemContext" class="input-textarea" rows="3"
+                            placeholder="補充背景：這個問題已經持續多久？你已經試過什麼方法？為什麼之前的方法沒用？"></textarea>
                     </div>
                 </div>
                 <div class="step-nav">
@@ -117,51 +120,104 @@
                 </div>
             </div>
 
-            <!-- Step 1: Ask the Right Question -->
+            <!-- Step 1: Ask the Right Question (ENHANCED) -->
             <div class="step-content" id="step-1">
                 <div class="card">
                     <h2>問對問題框架</h2>
                     <p class="card-desc">
-                        密涅瓦大學認為，要問對問題必須先釐清四個要素。
-                        當你在限制條件內移除障礙後確實能達成目標，就代表你問對了問題。
+                        密涅瓦大學認為，問對問題需要釐清四個要素。每個要素都附帶引導子問題，幫你想得更深。
                     </p>
-                    <div class="framework-grid">
-                        <div class="framework-item">
-                            <div class="framework-header">
-                                <span class="framework-badge badge-blue">現況</span>
-                                <span class="framework-en">Current Situation</span>
-                            </div>
-                            <textarea id="frameSituation" class="input-textarea" rows="3"
-                                placeholder="目前的狀況是什麼？發生了什麼事？"></textarea>
+
+                    <!-- 現況 -->
+                    <div class="framework-block">
+                        <div class="framework-header">
+                            <span class="framework-badge badge-blue">現況</span>
+                            <span class="framework-en">Current Situation</span>
                         </div>
-                        <div class="framework-item">
-                            <div class="framework-header">
-                                <span class="framework-badge badge-green">目標</span>
-                                <span class="framework-en">Goal</span>
+                        <textarea id="frameSituation" class="input-textarea" rows="3"
+                            placeholder="目前的狀況是什麼？正在發生什麼事？"></textarea>
+                        <div class="sub-prompts">
+                            <div class="sub-prompt-item">
+                                <label>誰受到影響？</label>
+                                <input type="text" id="situationWho" class="input-text" placeholder="例如：我自己、團隊、客戶、老闆...">
                             </div>
-                            <textarea id="frameGoal" class="input-textarea" rows="3"
-                                placeholder="你希望達到什麼結果？理想狀態是什麼？"></textarea>
-                        </div>
-                        <div class="framework-item">
-                            <div class="framework-header">
-                                <span class="framework-badge badge-orange">障礙</span>
-                                <span class="framework-en">Obstacles (可改變的)</span>
+                            <div class="sub-prompt-item">
+                                <label>已持續多久？造成什麼影響？</label>
+                                <input type="text" id="situationImpact" class="input-text" placeholder="例如：三個月了，專案延遲、士氣低落...">
                             </div>
-                            <textarea id="frameObstacles" class="input-textarea" rows="3"
-                                placeholder="什麼阻礙了你達成目標？這些是「可以被改變」的因素。"></textarea>
-                        </div>
-                        <div class="framework-item">
-                            <div class="framework-header">
-                                <span class="framework-badge badge-red">限制</span>
-                                <span class="framework-en">Constraints (不可改變的)</span>
-                            </div>
-                            <textarea id="frameConstraints" class="input-textarea" rows="3"
-                                placeholder="什麼是不能改變的？預算上限？時間限制？政策規定？"></textarea>
                         </div>
                     </div>
+
+                    <!-- 目標 -->
+                    <div class="framework-block">
+                        <div class="framework-header">
+                            <span class="framework-badge badge-green">目標</span>
+                            <span class="framework-en">Goal</span>
+                        </div>
+                        <textarea id="frameGoal" class="input-textarea" rows="3"
+                            placeholder="你希望達到什麼結果？理想狀態是什麼？"></textarea>
+                        <div class="sub-prompts">
+                            <div class="sub-prompt-item">
+                                <label>如何衡量目標是否達成？</label>
+                                <input type="text" id="goalMetric" class="input-text" placeholder="例如：產品上線、營收增長20%、團隊滿意度提升...">
+                            </div>
+                            <div class="sub-prompt-item">
+                                <label>期望的時間框架？</label>
+                                <input type="text" id="goalTimeline" class="input-text" placeholder="例如：三個月內、年底前、下季...">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 障礙 -->
+                    <div class="framework-block">
+                        <div class="framework-header">
+                            <span class="framework-badge badge-orange">障礙</span>
+                            <span class="framework-en">Obstacles（可以改變的）</span>
+                        </div>
+                        <textarea id="frameObstacles" class="input-textarea" rows="3"
+                            placeholder="什麼阻礙了你達成目標？這些是「可以被改變」的因素。"></textarea>
+                        <div class="sub-prompts">
+                            <div class="sub-prompt-item">
+                                <label>試過什麼解法？為什麼沒用？</label>
+                                <input type="text" id="obstaclesTried" class="input-text" placeholder="例如：開過會討論但沒結論、試過加班但品質下降...">
+                            </div>
+                            <div class="sub-prompt-item">
+                                <label>最大的單一障礙是什麼？</label>
+                                <input type="text" id="obstaclesBiggest" class="input-text" placeholder="如果只能解決一件事，你會選哪個？">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 限制 -->
+                    <div class="framework-block">
+                        <div class="framework-header">
+                            <span class="framework-badge badge-red">限制</span>
+                            <span class="framework-en">Constraints（不可改變的）</span>
+                        </div>
+                        <textarea id="frameConstraints" class="input-textarea" rows="3"
+                            placeholder="什麼是不能改變的？預算上限？時間限制？政策規定？"></textarea>
+                        <div class="sub-prompts">
+                            <div class="sub-prompt-row">
+                                <div class="sub-prompt-item">
+                                    <label>預算/資源限制</label>
+                                    <input type="text" id="constraintBudget" class="input-text" placeholder="例如：預算100萬、只有3個人...">
+                                </div>
+                                <div class="sub-prompt-item">
+                                    <label>時間限制</label>
+                                    <input type="text" id="constraintTime" class="input-text" placeholder="例如：截止日是Q3、不能延期...">
+                                </div>
+                            </div>
+                            <div class="sub-prompt-item">
+                                <label>其他不可動搖的條件</label>
+                                <input type="text" id="constraintOther" class="input-text" placeholder="例如：法規要求、公司政策、老闆的底線...">
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="validation-box" id="validationBox">
-                        <h4>自我檢驗</h4>
+                        <h4>自我檢驗（密涅瓦核心驗證）</h4>
                         <p>問問自己：如果在這些<strong>限制</strong>條件內，把<strong>障礙</strong>移除掉，我是否確實能達到<strong>目標</strong>？</p>
+                        <p class="validation-hint">如果答案是「不確定」，可能代表你的障礙和限制還沒分清楚，或是目標需要調整。</p>
                         <div class="validation-check">
                             <label class="checkbox-label">
                                 <input type="checkbox" id="validationCheck">
@@ -181,16 +237,13 @@
                 <div class="card">
                     <h2>選擇思考習慣</h2>
                     <p class="card-desc">
-                        根據你的問題描述，系統推薦了以下思考習慣（已自動勾選）。你也可以手動調整選擇。
+                        根據你的問題描述，系統推薦了以下思考習慣（已自動勾選）。
+                        點擊任何習慣可以查看詳細說明和使用方式。
                     </p>
-                    <div class="habits-recommended" id="habitsRecommended">
-                        <!-- Dynamically populated -->
-                    </div>
+                    <div class="habits-recommended" id="habitsRecommended"></div>
                     <details class="habits-all-toggle">
-                        <summary>瀏覽全部 76 個思考習慣</summary>
-                        <div class="habits-all" id="habitsAll">
-                            <!-- Dynamically populated -->
-                        </div>
+                        <summary>瀏覽全部 76 個思考習慣（點擊可開啟工具）</summary>
+                        <div class="habits-all" id="habitsAll"></div>
                     </details>
                 </div>
                 <div class="step-nav">
@@ -203,10 +256,8 @@
             <div class="step-content" id="step-3">
                 <div class="card">
                     <h2>問題規格書</h2>
-                    <p class="card-desc">以下是根據你的輸入自動產生的結構化問題規格書。</p>
-                    <div class="spec-output" id="specOutput">
-                        <!-- Dynamically populated -->
-                    </div>
+                    <p class="card-desc">根據你的所有輸入，自動產生結構化的問題規格書。</p>
+                    <div class="spec-output" id="specOutput"></div>
                     <button class="btn btn-outline" onclick="copySpec()">複製問題規格書</button>
                 </div>
                 <div class="step-nav">
@@ -220,11 +271,9 @@
                 <div class="card">
                     <h2>AI 提示詞</h2>
                     <p class="card-desc">
-                        複製以下提示詞，貼入任何免費AI工具（ChatGPT、Claude、Gemini等）即可獲得深度分析。
+                        複製以下提示詞，貼入任何免費AI工具即可獲得基於密涅瓦思考框架的深度分析。
                     </p>
-                    <div class="prompt-output" id="promptOutput">
-                        <!-- Dynamically populated -->
-                    </div>
+                    <div class="prompt-output" id="promptOutput"></div>
                     <div class="prompt-actions">
                         <button class="btn btn-primary" onclick="copyPrompt()">複製提示詞</button>
                         <button class="btn btn-outline" onclick="downloadPrompt()">下載為文字檔</button>
@@ -233,22 +282,10 @@
                     <div class="usage-tips">
                         <h4>使用方式</h4>
                         <div class="usage-grid">
-                            <div class="usage-item">
-                                <strong>ChatGPT</strong>
-                                <p>免費版即可使用，貼入對話框送出</p>
-                            </div>
-                            <div class="usage-item">
-                                <strong>Claude</strong>
-                                <p>claude.ai 免費版，貼入對話框送出</p>
-                            </div>
-                            <div class="usage-item">
-                                <strong>Gemini</strong>
-                                <p>gemini.google.com 免費使用</p>
-                            </div>
-                            <div class="usage-item">
-                                <strong>其他 AI</strong>
-                                <p>任何支援長文輸入的 AI 工具皆可</p>
-                            </div>
+                            <div class="usage-item"><strong>ChatGPT</strong><p>免費版即可，貼入對話框送出</p></div>
+                            <div class="usage-item"><strong>Claude</strong><p>claude.ai 免費版，貼入對話框</p></div>
+                            <div class="usage-item"><strong>Gemini</strong><p>gemini.google.com 免費使用</p></div>
+                            <div class="usage-item"><strong>其他 AI</strong><p>任何支援長文輸入的 AI 皆可</p></div>
                         </div>
                     </div>
                 </div>
@@ -265,12 +302,9 @@
         <div class="container">
             <h2 class="section-title">密涅瓦大學 76 個思考習慣總覽</h2>
             <p class="section-desc">
-                出自密涅瓦大學（Minerva University），萃取自過去 200 年人類最有效的決策方法。
-                分為四大類別：批判性思考、創意思考、有效溝通、有效互動。
+                點擊任何一個思考習慣，即可開啟該工具的互動介面，輸入你的問題並生成專用 AI 提示詞。
             </p>
-            <div class="reference-categories" id="referenceCategories">
-                <!-- Dynamically populated -->
-            </div>
+            <div class="reference-categories" id="referenceCategories"></div>
             <button class="btn btn-outline" onclick="showSection('welcome')" style="margin-top:2rem;">返回首頁</button>
         </div>
     </section>
@@ -279,57 +313,26 @@
     <section id="about" class="section-about" style="display:none;">
         <div class="container">
             <h2 class="section-title">關於密涅瓦思考框架</h2>
-
-            <div class="about-card">
-                <h3>什麼是思考外部化？</h3>
-                <p>密涅瓦大學把人類想事情的方式拆解成約 76 個思考習慣。當你把思考過程「外部化」後，就能像堆積木一樣，清楚看到哪些需要改、哪些需要加。這讓決策變得可檢驗、可複製、可優化。</p>
-            </div>
-
-            <div class="about-card">
-                <h3>問對問題的四要素</h3>
-                <p>密涅瓦認為你要問對問題，需要先釐清：</p>
-                <ul>
-                    <li><strong>現況</strong> - 目前發生了什麼</li>
-                    <li><strong>目標</strong> - 你想要達成什麼</li>
-                    <li><strong>障礙</strong> - 阻擋你的（可以改變的）</li>
-                    <li><strong>限制</strong> - 不能改變的條件</li>
-                </ul>
-                <p>如果在限制條件內，把障礙拿掉後確實能達到目標，就代表你問對了問題。</p>
-            </div>
-
-            <div class="about-card">
-                <h3>決策科學三要件</h3>
-                <ul>
-                    <li><strong>可檢驗</strong> - 決策過程可以被攤開來檢視</li>
-                    <li><strong>可複製</strong> - 成功的方法可以被重複使用</li>
-                    <li><strong>可優化</strong> - 每次都能根據回饋持續改善</li>
-                </ul>
-            </div>
-
-            <div class="about-card">
-                <h3>附帶學習（Incidental Learning）</h3>
-                <p>密涅瓦共同創辦人 Stephen Kosslyn 發現：光靠刻意練習，知識很快就會遺忘。真正記住的方式是「附帶學習」——帶著真實的痛點去使用思考工具，當問題真的被解決的那一刻，這個思考習慣就永遠不會忘記。</p>
-            </div>
-
-            <div class="about-card">
-                <h3>Drive Train 模型</h3>
-                <p>來自全球最大數據平台 Kaggle 的決策框架：</p>
-                <ul>
-                    <li><strong>數據</strong> - 蒐集關鍵資訊</li>
-                    <li><strong>槓桿</strong> - 找到最有效的介入點</li>
-                    <li><strong>回饋</strong> - 持續根據結果調整</li>
-                </ul>
-            </div>
-
-            <div class="about-card">
-                <h3>資料來源</h3>
-                <p>本工具參考自密涅瓦大學（Minerva University）決策科學課程，以及《全球人才搶著學：密涅瓦的思考習慣訓練》一書。工具為開源免費，不隸屬於密涅瓦大學。</p>
-            </div>
-
+            <div class="about-card"><h3>什麼是思考外部化？</h3><p>密涅瓦大學把人類想事情的方式拆解成約 76 個思考習慣。當你把思考過程「外部化」後，就能像堆積木一樣，清楚看到哪些需要改、哪些需要加。這讓決策變得可檢驗、可複製、可優化。</p></div>
+            <div class="about-card"><h3>問對問題的四要素</h3><p>密涅瓦認為你要問對問題，需要先釐清：</p><ul><li><strong>現況</strong> - 目前發生了什麼</li><li><strong>目標</strong> - 你想要達成什麼</li><li><strong>障礙</strong> - 阻擋你的（可以改變的）</li><li><strong>限制</strong> - 不能改變的條件</li></ul><p>如果在限制條件內，把障礙拿掉後確實能達到目標，就代表你問對了問題。</p></div>
+            <div class="about-card"><h3>決策科學三要件</h3><ul><li><strong>可檢驗</strong> - 決策過程可以被攤開來檢視</li><li><strong>可複製</strong> - 成功的方法可以被重複使用</li><li><strong>可優化</strong> - 每次都能根據回饋持續改善</li></ul></div>
+            <div class="about-card"><h3>附帶學習（Incidental Learning）</h3><p>密涅瓦共同創辦人 Stephen Kosslyn 發現：真正記住的方式是「附帶學習」——帶著真實的痛點去使用思考工具，當問題真的被解決的那一刻，這個思考習慣就永遠不會忘記。</p></div>
+            <div class="about-card"><h3>Drive Train 模型</h3><ul><li><strong>數據</strong> - 蒐集關鍵資訊</li><li><strong>槓桿</strong> - 找到最有效的介入點</li><li><strong>回饋</strong> - 持續根據結果調整</li></ul></div>
+            <div class="about-card"><h3>資料來源</h3><p>本工具參考自密涅瓦大學（Minerva University）決策科學課程，以及《全球人才搶著學：密涅瓦的思考習慣訓練》一書。工具為開源免費，不隸屬於密涅瓦大學。</p></div>
             <button class="btn btn-outline" onclick="showSection('welcome')" style="margin-top:2rem;">返回首頁</button>
         </div>
     </section>
 </main>
+
+<!-- ==================== HABIT TOOL MODAL ==================== -->
+<div class="modal-overlay" id="habitModal">
+    <div class="modal">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <div class="modal-header" id="modalHeader"></div>
+        <div class="modal-body" id="modalBody"></div>
+        <div class="modal-footer" id="modalFooter"></div>
+    </div>
+</div>
 
 <footer class="footer">
     <div class="container">
