@@ -336,7 +336,7 @@ function updateStep() {
 
 // ===== RECOMMENDATION ENGINE =====
 function generateRecommendations() {
-  const texts = ['problemInput','frameSituation','frameGoal','frameObstacles','frameConstraints','problemContext'].map(id => {
+  const texts = ['problemInput','frameSituation','frameGoal','frameObstacles','frameConstraints'].map(id => {
     const el = document.getElementById(id); return el ? el.value : '';
   });
   const typeEl = document.getElementById('problemType');
@@ -506,11 +506,7 @@ function generateSpec() {
   const v = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
   const problem = v('problemInput'), situation = v('frameSituation'), goal = v('frameGoal');
   const obstacles = v('frameObstacles'), constraints = v('frameConstraints');
-  const pType = v('problemType'), pUrgency = v('problemUrgency'), pContext = v('problemContext');
-  const who = v('situationWho'), impact = v('situationImpact');
-  const metric = v('goalMetric'), timeline = v('goalTimeline');
-  const tried = v('obstaclesTried'), biggest = v('obstaclesBiggest');
-  const budget = v('constraintBudget'), time = v('constraintTime'), other = v('constraintOther');
+  const pType = v('problemType'), pUrgency = v('problemUrgency');
   const validated = document.getElementById('validationCheck').checked;
   const habits = getSelectedHabitsInfo();
 
@@ -524,19 +520,18 @@ function generateSpec() {
 【問題描述】
 ${problem || '（未填寫）'}
 ${pType ? '\n問題類型：' + (typeMap[pType]||pType) : ''}${pUrgency ? '  |  緊急程度：' + (urgMap[pUrgency]||pUrgency) : ''}
-${pContext ? '\n補充背景：' + pContext : ''}
 
 --------------------------------------------
 問對問題框架
 --------------------------------------------
 
-[現況] ${situation || '（未填寫）'}${who ? '\n  > 受影響者：' + who : ''}${impact ? '\n  > 持續時間/影響：' + impact : ''}
+[現況] ${situation || '（未填寫）'}
 
-[目標] ${goal || '（未填寫）'}${metric ? '\n  > 成功衡量標準：' + metric : ''}${timeline ? '\n  > 時間框架：' + timeline : ''}
+[目標] ${goal || '（未填寫）'}
 
-[障礙（可改變的）] ${obstacles || '（未填寫）'}${tried ? '\n  > 已嘗試的解法：' + tried : ''}${biggest ? '\n  > 最大單一障礙：' + biggest : ''}
+[障礙（可改變的）] ${obstacles || '（未填寫）'}
 
-[限制（不可改變的）] ${constraints || '（未填寫）'}${budget ? '\n  > 預算/資源：' + budget : ''}${time ? '\n  > 時間限制：' + time : ''}${other ? '\n  > 其他條件：' + other : ''}
+[限制（不可改變的）] ${constraints || '（未填寫）'}
 
 [框架驗證] ${validated ? '通過 - 移除障礙後在限制內可達成目標' : '未驗證'}
 
@@ -568,11 +563,7 @@ function getSelectedHabitsInfo() {
 function generatePrompt() {
   const v = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
   const problem = v('problemInput'), situation = v('frameSituation'), goal = v('frameGoal');
-  const obstacles = v('frameObstacles'), constraints = v('frameConstraints'), pContext = v('problemContext');
-  const who = v('situationWho'), impact = v('situationImpact');
-  const metric = v('goalMetric'), timeline = v('goalTimeline');
-  const tried = v('obstaclesTried'), biggest = v('obstaclesBiggest');
-  const budget = v('constraintBudget'), time = v('constraintTime'), other = v('constraintOther');
+  const obstacles = v('frameObstacles'), constraints = v('frameConstraints');
   const habits = getSelectedHabitsInfo();
 
   let hs = '';
@@ -589,21 +580,20 @@ function generatePrompt() {
 
 ## 問題描述
 ${problem || '（使用者未提供詳細描述）'}
-${pContext ? '\n補充背景：' + pContext : ''}
 
 ## 問對問題框架
 
 **現況（Current Situation）：**
-${situation || '（未填寫）'}${who ? '\n受影響者：' + who : ''}${impact ? '\n持續時間與影響：' + impact : ''}
+${situation || '（未填寫）'}
 
 **目標（Goal）：**
-${goal || '（未填寫）'}${metric ? '\n成功衡量標準：' + metric : ''}${timeline ? '\n期望時間框架：' + timeline : ''}
+${goal || '（未填寫）'}
 
 **障礙（Obstacles - 可改變的）：**
-${obstacles || '（未填寫）'}${tried ? '\n已嘗試的解法：' + tried : ''}${biggest ? '\n最大障礙：' + biggest : ''}
+${obstacles || '（未填寫）'}
 
 **限制（Constraints - 不可改變的）：**
-${constraints || '（未填寫）'}${budget ? '\n預算/資源限制：' + budget : ''}${time ? '\n時間限制：' + time : ''}${other ? '\n其他限制：' + other : ''}
+${constraints || '（未填寫）'}
 
 ## 指定使用的思考習慣（${habits.length} 個）
 ${hs || '（未選擇，請自動推薦適合的思考習慣）'}
@@ -678,9 +668,7 @@ function downloadPrompt() {
 
 // ===== RESET =====
 function resetApp() {
-  ['problemInput','frameSituation','frameGoal','frameObstacles','frameConstraints','problemContext',
-   'situationWho','situationImpact','goalMetric','goalTimeline','obstaclesTried','obstaclesBiggest',
-   'constraintBudget','constraintTime','constraintOther'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+  ['problemInput','frameSituation','frameGoal','frameObstacles','frameConstraints'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
   const sel = document.getElementById('problemType'); if (sel) sel.selectedIndex = 0;
   const urg = document.getElementById('problemUrgency'); if (urg) urg.selectedIndex = 0;
   document.getElementById('validationCheck').checked = false;

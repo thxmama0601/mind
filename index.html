@@ -79,40 +79,34 @@
                 <div class="card">
                     <h2>描述你遇到的問題</h2>
                     <p class="card-desc">請盡可能具體地描述你目前面臨的問題或挑戰。越詳細，後續分析越精準。</p>
-                    <textarea id="problemInput" class="input-textarea" rows="6"
-                        placeholder="例如：我們團隊要在三個月內完成一個新產品的開發，但團隊成員對技術方向有分歧，而且預算有限..."></textarea>
-
-                    <div class="sub-questions">
-                        <h4>深度補充（選填，但會讓分析更精準）</h4>
-                        <div class="sub-q-grid">
-                            <div class="sub-q-item">
-                                <label>問題類型</label>
-                                <select id="problemType" class="input-select">
-                                    <option value="">-- 選擇最接近的 --</option>
-                                    <option value="decision">決策選擇（A 還是 B）</option>
-                                    <option value="conflict">衝突協調（人際 / 團隊）</option>
-                                    <option value="strategy">策略規劃（方向 / 佈局）</option>
-                                    <option value="execution">執行卡關（做不出來）</option>
-                                    <option value="innovation">創新探索（從 0 到 1）</option>
-                                    <option value="optimization">效率優化（做得更好）</option>
-                                    <option value="communication">溝通說服（對上 / 對下）</option>
-                                    <option value="personal">個人成長（職涯 / 學習）</option>
-                                </select>
-                            </div>
-                            <div class="sub-q-item">
-                                <label>緊急程度</label>
-                                <select id="problemUrgency" class="input-select">
-                                    <option value="">-- 選擇 --</option>
-                                    <option value="urgent">急迫（一週內需要行動）</option>
-                                    <option value="soon">短期（一個月內）</option>
-                                    <option value="medium">中期（一季內）</option>
-                                    <option value="long">長期（規劃性質）</option>
-                                </select>
-                            </div>
+                    <div class="sub-q-grid" style="margin-bottom:0.75rem;">
+                        <div class="sub-q-item">
+                            <label>問題類型</label>
+                            <select id="problemType" class="input-select">
+                                <option value="">-- 選擇最接近的 --</option>
+                                <option value="decision">決策選擇（A 還是 B）</option>
+                                <option value="conflict">衝突協調（人際 / 團隊）</option>
+                                <option value="strategy">策略規劃（方向 / 佈局）</option>
+                                <option value="execution">執行卡關（做不出來）</option>
+                                <option value="innovation">創新探索（從 0 到 1）</option>
+                                <option value="optimization">效率優化（做得更好）</option>
+                                <option value="communication">溝通說服（對上 / 對下）</option>
+                                <option value="personal">個人成長（職涯 / 學習）</option>
+                            </select>
                         </div>
-                        <textarea id="problemContext" class="input-textarea" rows="3"
-                            placeholder="補充背景：這個問題已經持續多久？你已經試過什麼方法？為什麼之前的方法沒用？"></textarea>
+                        <div class="sub-q-item">
+                            <label>緊急程度</label>
+                            <select id="problemUrgency" class="input-select">
+                                <option value="">-- 選擇 --</option>
+                                <option value="urgent">急迫（一週內需要行動）</option>
+                                <option value="soon">短期（一個月內）</option>
+                                <option value="medium">中期（一季內）</option>
+                                <option value="long">長期（規劃性質）</option>
+                            </select>
+                        </div>
                     </div>
+                    <textarea id="problemInput" class="input-textarea" rows="8"
+                        placeholder="請描述你遇到的問題，可以參考以下方向：&#10;&#10;> 具體發生了什麼事？&#10;> 這個問題已經持續多久？&#10;> 為什麼這是個問題（痛點在哪）？&#10;> 你已經嘗試過什麼方法？為什麼沒用？&#10;&#10;例如：我們團隊要在三個月內完成新產品開發，但團隊對技術方向有分歧，預算也有限。之前試過開會討論但沒有結論..."></textarea>
                 </div>
                 <div class="step-nav">
                     <div></div>
@@ -128,90 +122,60 @@
                         密涅瓦大學認為，問對問題需要釐清四個要素。每個要素都附帶引導子問題，幫你想得更深。
                     </p>
 
-                    <!-- 現況 -->
                     <div class="framework-block">
                         <div class="framework-header">
                             <span class="framework-badge badge-blue">現況</span>
                             <span class="framework-en">Current Situation</span>
                         </div>
-                        <textarea id="frameSituation" class="input-textarea" rows="3"
-                            placeholder="目前的狀況是什麼？正在發生什麼事？"></textarea>
-                        <div class="sub-prompts">
-                            <div class="sub-prompt-item">
-                                <label>誰受到影響？</label>
-                                <input type="text" id="situationWho" class="input-text" placeholder="例如：我自己、團隊、客戶、老闆...">
-                            </div>
-                            <div class="sub-prompt-item">
-                                <label>已持續多久？造成什麼影響？</label>
-                                <input type="text" id="situationImpact" class="input-text" placeholder="例如：三個月了，專案延遲、士氣低落...">
-                            </div>
+                        <div class="framework-hints">
+                            <span>正在發生什麼事？</span>
+                            <span>誰受到影響？</span>
+                            <span>已持續多久？造成什麼影響？</span>
                         </div>
+                        <textarea id="frameSituation" class="input-textarea" rows="4"
+                            placeholder="例如：團隊有8個人，從上個月開始對技術選型出現分歧，前端和後端各有想法。已經開了三次會沒有結論，專案進度落後兩週..."></textarea>
                     </div>
 
-                    <!-- 目標 -->
                     <div class="framework-block">
                         <div class="framework-header">
                             <span class="framework-badge badge-green">目標</span>
                             <span class="framework-en">Goal</span>
                         </div>
-                        <textarea id="frameGoal" class="input-textarea" rows="3"
-                            placeholder="你希望達到什麼結果？理想狀態是什麼？"></textarea>
-                        <div class="sub-prompts">
-                            <div class="sub-prompt-item">
-                                <label>如何衡量目標是否達成？</label>
-                                <input type="text" id="goalMetric" class="input-text" placeholder="例如：產品上線、營收增長20%、團隊滿意度提升...">
-                            </div>
-                            <div class="sub-prompt-item">
-                                <label>期望的時間框架？</label>
-                                <input type="text" id="goalTimeline" class="input-text" placeholder="例如：三個月內、年底前、下季...">
-                            </div>
+                        <div class="framework-hints">
+                            <span>理想結果是什麼？</span>
+                            <span>如何衡量是否成功？</span>
+                            <span>期望在什麼時間內達成？</span>
                         </div>
+                        <textarea id="frameGoal" class="input-textarea" rows="4"
+                            placeholder="例如：三個月內完成產品MVP上線，團隊對技術方向達成共識，客戶滿意度達到80分以上..."></textarea>
                     </div>
 
-                    <!-- 障礙 -->
                     <div class="framework-block">
                         <div class="framework-header">
                             <span class="framework-badge badge-orange">障礙</span>
                             <span class="framework-en">Obstacles（可以改變的）</span>
                         </div>
-                        <textarea id="frameObstacles" class="input-textarea" rows="3"
-                            placeholder="什麼阻礙了你達成目標？這些是「可以被改變」的因素。"></textarea>
-                        <div class="sub-prompts">
-                            <div class="sub-prompt-item">
-                                <label>試過什麼解法？為什麼沒用？</label>
-                                <input type="text" id="obstaclesTried" class="input-text" placeholder="例如：開過會討論但沒結論、試過加班但品質下降...">
-                            </div>
-                            <div class="sub-prompt-item">
-                                <label>最大的單一障礙是什麼？</label>
-                                <input type="text" id="obstaclesBiggest" class="input-text" placeholder="如果只能解決一件事，你會選哪個？">
-                            </div>
+                        <div class="framework-hints">
+                            <span>什麼阻礙你達成目標？</span>
+                            <span>試過什麼解法？為什麼沒用？</span>
+                            <span>最大的單一障礙是？</span>
                         </div>
+                        <textarea id="frameObstacles" class="input-textarea" rows="4"
+                            placeholder="例如：團隊缺乏統一的決策流程，每次開會都是各說各話。試過投票但兩邊票數接近，沒有人願意退讓..."></textarea>
                     </div>
 
-                    <!-- 限制 -->
                     <div class="framework-block">
                         <div class="framework-header">
                             <span class="framework-badge badge-red">限制</span>
                             <span class="framework-en">Constraints（不可改變的）</span>
                         </div>
-                        <textarea id="frameConstraints" class="input-textarea" rows="3"
-                            placeholder="什麼是不能改變的？預算上限？時間限制？政策規定？"></textarea>
-                        <div class="sub-prompts">
-                            <div class="sub-prompt-row">
-                                <div class="sub-prompt-item">
-                                    <label>預算/資源限制</label>
-                                    <input type="text" id="constraintBudget" class="input-text" placeholder="例如：預算100萬、只有3個人...">
-                                </div>
-                                <div class="sub-prompt-item">
-                                    <label>時間限制</label>
-                                    <input type="text" id="constraintTime" class="input-text" placeholder="例如：截止日是Q3、不能延期...">
-                                </div>
-                            </div>
-                            <div class="sub-prompt-item">
-                                <label>其他不可動搖的條件</label>
-                                <input type="text" id="constraintOther" class="input-text" placeholder="例如：法規要求、公司政策、老闆的底線...">
-                            </div>
+                        <div class="framework-hints">
+                            <span>預算 / 資源限制？</span>
+                            <span>時間限制？</span>
+                            <span>政策、法規或其他硬性條件？</span>
                         </div>
+                        <textarea id="frameConstraints" class="input-textarea" rows="4"
+                            placeholder="例如：預算上限200萬不能追加、截止日是Q3不能延期、必須使用公司現有的雲端架構..."></textarea>
                     </div>
 
                     <div class="validation-box" id="validationBox">

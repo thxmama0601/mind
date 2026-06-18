@@ -106,14 +106,12 @@ body {
 .input-textarea::placeholder, .input-text::placeholder { color: var(--text-light); }
 
 /* ===== SUB-QUESTIONS (Step 0) ===== */
-.sub-questions { margin-top: 1.25rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1.25rem; }
-.sub-questions h4 { font-size: 0.85rem; color: var(--text-medium); margin-bottom: 0.75rem; }
-.sub-q-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem; }
+.sub-q-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
 .sub-q-item label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-medium); margin-bottom: 0.25rem; }
 
-/* ===== FRAMEWORK BLOCKS (Step 1 Enhanced) ===== */
-.framework-block { margin-bottom: 1.5rem; padding: 1.25rem; background: var(--bg); border-radius: var(--radius-sm); border: 1px solid var(--border); }
-.framework-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+/* ===== FRAMEWORK BLOCKS (Step 1) ===== */
+.framework-block { margin-bottom: 1.25rem; padding: 1.25rem; background: var(--bg); border-radius: var(--radius-sm); border: 1px solid var(--border); }
+.framework-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
 .framework-badge { padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.8rem; font-weight: 700; }
 .badge-blue { background: var(--info-bg); color: var(--info); }
 .badge-green { background: var(--success-bg); color: var(--success); }
@@ -121,10 +119,8 @@ body {
 .badge-red { background: var(--danger-bg); color: var(--danger); }
 .framework-en { font-size: 0.75rem; color: var(--text-light); }
 
-.sub-prompts { margin-top: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem; }
-.sub-prompt-item { display: flex; flex-direction: column; gap: 0.25rem; }
-.sub-prompt-item label { font-size: 0.78rem; font-weight: 600; color: var(--text-light); }
-.sub-prompt-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+.framework-hints { display: flex; flex-wrap: wrap; gap: 0.375rem; margin-bottom: 0.625rem; }
+.framework-hints span { font-size: 0.75rem; color: var(--text-light); background: var(--card); padding: 0.2rem 0.6rem; border-radius: 2rem; border: 1px solid var(--border); }
 
 /* ===== VALIDATION ===== */
 .validation-box { background: var(--primary-light); border: 1.5px dashed var(--primary); padding: 1.25rem; border-radius: var(--radius-sm); margin-top: 0.5rem; }
